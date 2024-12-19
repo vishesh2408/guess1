@@ -1,33 +1,31 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Guessing Game - ac70c80d</title>
+</head>
 <body>
-<title> vishesh yadav ac70c80d </title>
-<h1> Welcome to my guessing game</h1>
+    <h1>Welcome to the Guessing Game</h1>
+    <?php
+    if (!isset($_GET['guess'])) {
+        echo "Missing guess parameter";
+        return;
+    }
 
-<?php
-$correctnumber=20; //change this number //
-if(isset($_GET['guess']))
-{
-  if (is_numeric($_GET['guess'])===FALSE)
- {
-echo "Your guess is not a number";
-}
-else if ($_GET['guess']<$correctnumber)
- {
-echo "Your guess is too low";
-}
-else if ($_GET['guess']>$correctnumber)
- {
-echo "Your guess is too high";
-}
-else if ($_GET['guess']==$correctnumber)
- {
-echo "Congratulations - You are right";
-}
-}
-else
-{
-echo "Missing guess parameter <br> Your guess is too short";
-}
-?>
+    if (!is_numeric($_GET['guess'])) {
+        echo "Your guess is not a number";
+        return;
+    }
+
+    $correctAnswer = 20;
+    $guess = $_GET['guess'];
+
+    if ($guess < $correctAnswer) {
+        echo "Your guess is too low";
+    } elseif ($guess > $correctAnswer) {
+        echo "Your guess is too high";
+    } else {
+        echo "Congratulations - You are right";
+    }
+    ?>
 </body>
 </html>
